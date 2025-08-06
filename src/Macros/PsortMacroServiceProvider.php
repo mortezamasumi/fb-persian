@@ -6,7 +6,7 @@ use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
-use Mortezamasumi\Persian\Facades\Persian;
+use Mortezamasumi\FbPersian\Facades\FbPersian;
 
 /**
  * Interface declaring Collection psort macro for IDE support
@@ -24,7 +24,7 @@ class PsortMacroServiceProvider extends ServiceProvider
         Collection::macro(
             'psort',
             fn (string $field, bool $descending = false) => $this->sortBy([
-                fn ($a, $b) => $descending xor strtr(data_get($a, $field), Persian::persianConvert()) > strtr(data_get($b, $field), Persian::persianConvert())
+                fn ($a, $b) => $descending xor strtr(data_get($a, $field), FbPersian::persianConvert()) > strtr(data_get($b, $field), FbPersian::persianConvert())
             ]),
         );
 

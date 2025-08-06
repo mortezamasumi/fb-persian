@@ -6,7 +6,7 @@ use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
-use Mortezamasumi\Persian\Facades\Persian;
+use Mortezamasumi\FbPersian\Facades\FbPersian;
 use Closure;
 
 /**
@@ -40,7 +40,7 @@ class TableMacroServiceProvider extends ServiceProvider
                 $onlyDate = $column->evaluate($onlyDate, ['record' => $record, 'state' => $state]);
                 $format ??= ($onlyDate ? __('persian::persian.date.format.simple') : __('persian::persian.date.format.time-simple'));
 
-                return Persian::jDateTime($format, $state, $timezone, $forceLocale);
+                return FbPersian::jDateTime($format, $state, $timezone, $forceLocale);
             });
 
             return $this;
@@ -48,7 +48,7 @@ class TableMacroServiceProvider extends ServiceProvider
 
         TextColumn::macro('localeDigit', function (?string $forceLocale = null): TextColumn {
             /** @var TextColumn $this */
-            $this->formatStateUsing(static fn (mixed $state) => in_array(gettype($state), ['integer', 'double', 'string']) ? Persian::digit($state, $forceLocale) : $state);
+            $this->formatStateUsing(static fn (mixed $state) => in_array(gettype($state), ['integer', 'double', 'string']) ? FbPersian::digit($state, $forceLocale) : $state);
 
             return $this;
         });

@@ -6,7 +6,7 @@ use Filament\Infolists\Components\Component;
 use Filament\Infolists\Components\TextEntry;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
-use Mortezamasumi\Persian\Facades\Persian;
+use Mortezamasumi\FbPersian\Facades\FbPersian;
 use Closure;
 
 /**
@@ -40,7 +40,7 @@ class InfolistMacroServiceProvider extends ServiceProvider
                 $onlyDate = $component->evaluate($onlyDate, ['record' => $record, 'state' => $state]);
                 $format ??= ($onlyDate ? __('persian::persian.date.format.simple') : __('persian::persian.date.format.time-simple'));
 
-                return Persian::jDateTime($format, $state, $timezone, $forceLocale);
+                return FbPersian::jDateTime($format, $state, $timezone, $forceLocale);
             });
 
             return $this;
@@ -48,7 +48,7 @@ class InfolistMacroServiceProvider extends ServiceProvider
 
         TextEntry::macro('localeDigit', function (?string $forceLocale = null): TextEntry {
             /** @var TextEntry $this */
-            $this->formatStateUsing(static fn (mixed $state) => in_array(gettype($state), ['integer', 'double', 'string']) ? Persian::digit($state, $forceLocale) : $state);
+            $this->formatStateUsing(static fn (mixed $state) => in_array(gettype($state), ['integer', 'double', 'string']) ? FbPersian::digit($state, $forceLocale) : $state);
 
             return $this;
         });

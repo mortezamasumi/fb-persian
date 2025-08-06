@@ -9,7 +9,7 @@ use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
-use Mortezamasumi\Persian\Facades\Persian;
+use Mortezamasumi\FbPersian\Facades\FbPersian;
 use Closure;
 
 /**
@@ -28,14 +28,14 @@ class FormMacroServiceProvider extends ServiceProvider
     {
         TextInput::macro('toEN', function (): TextInput {
             /** @var TextInput $this */
-            $this->dehydrateStateUsing(fn (?string $state): ?string => Persian::arfaTOen($state));
+            $this->dehydrateStateUsing(fn (?string $state): ?string => FbPersian::arfaTOen($state));
 
             return $this;
         });
 
         TextInput::macro('toFA', function (): TextInput {
             /** @var TextInput $this */
-            $this->dehydrateStateUsing(fn (?string $state): ?string => Persian::enarTofa($state));
+            $this->dehydrateStateUsing(fn (?string $state): ?string => FbPersian::enarTofa($state));
 
             return $this;
         });
