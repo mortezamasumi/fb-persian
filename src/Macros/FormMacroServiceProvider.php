@@ -58,7 +58,7 @@ class FormMacroServiceProvider extends ServiceProvider
             $this->displayFormat(static function (DateTimePicker $component, ?Model $record, $state) use ($format, $onlyDate): ?string {
                 $format = $component->evaluate($format, ['record' => $record, 'state' => $state]);
                 $onlyDate = $component->evaluate($onlyDate, ['record' => $record, 'state' => $state]);
-                $format ??= ($onlyDate ? __('persian::persian.date.format.simple') : __('persian::persian.date.format.time-simple'));
+                $format ??= ($onlyDate ? __('fb-persian::fb-persian.date_format.simple') : __('fb-persian::fb-persian.date_format.time_simple'));
 
                 return $format;
             });
