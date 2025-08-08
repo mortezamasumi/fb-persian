@@ -1,9 +1,6 @@
 <?php
 
 return [
-    'nid' => [
-        'validation' => 'Invalid iranian NID',
-    ],
     'date_format' => [
         'simple' => 'Y/m/d',
         'full' => 'l j F Y',

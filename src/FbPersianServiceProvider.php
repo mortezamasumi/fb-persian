@@ -36,12 +36,6 @@ class FbPersianServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        // define iran_nid rule
-        Validator::extend('iran_nid', function ($attribute, $value, $parameters, $validator) {
-            return new IranNid($parameters[0] ?? true, $parameters[1] ?? false);
-        });
-
-        // Testing
         Testable::mixin(new TestsFbPersian);
     }
 }
