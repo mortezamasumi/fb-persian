@@ -50,4 +50,9 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: vendor/bin/pest --ci
+        run: |
+          if [ "${{ matrix.stability }}" = "prefer-lowest" ]; then
+            ./vendor/bin/pest --ci --exclude-group=arch
+          else
+            ./vendor/bin/pest --ci
+          fi
