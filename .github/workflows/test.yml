@@ -16,11 +16,12 @@ jobs:
         os: [ubuntu-latest]
         php: [8.3]
         laravel: [12.*]
-        stability: [prefer-lowest, prefer-stable]
+        stability: [prefer-stable]
         include:
           - laravel: 12.*
             testbench: 10.*
             carbon: 3.*
+            stability: prefer-lowest
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -50,9 +51,4 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: |
-          if [ "${{ matrix.stability }}" = "prefer-lowest" ]; then
-            ./vendor/bin/pest --ci --exclude-group=arch
-          else
-            ./vendor/bin/pest --ci
-          fi
+        run: vendor/bin/pest --ci
