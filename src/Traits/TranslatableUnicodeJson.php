@@ -13,7 +13,7 @@ trait TranslatableUnicodeJson
      * @param  int  $flags
      * @return string
      */
-    protected function asJson($value, $flags = 0)
+    protected function asJson($value, $flags = 0): string
     {
         return Json::encode($value, JSON_UNESCAPED_UNICODE | $flags);
     }
