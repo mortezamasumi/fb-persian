@@ -1,6 +1,6 @@
 <?php
 
-namespace Mortezamasumi\Persian\Traits;
+namespace Mortezamasumi\FbPersian\Traits;
 
 use Illuminate\Database\Eloquent\Casts\Json;
 
