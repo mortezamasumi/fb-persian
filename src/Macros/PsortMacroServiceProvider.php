@@ -19,13 +19,14 @@ class PsortMacroServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        /** @var Collection $this */
-        /** @disregard */
         Collection::macro(
-            'psort',
-            fn (string $field, bool $descending = false) => $this->sortBy([
-                fn ($a, $b) => $descending xor strtr(data_get($a, $field), FbPersian::persianConvert()) > strtr(data_get($b, $field), FbPersian::persianConvert())
-            ]),
+            'pSort',
+            function (?string $field = null, bool $descending = false) {
+                /** @var Collection $this */
+                return $this->sortBy([
+                    fn ($a, $b) => $descending xor strtr(data_get($a, $field), FbPersian::persianConvert()) > strtr(data_get($b, $field), FbPersian::persianConvert())
+                ]);
+            },
         );
 
         TextColumn::mixin(new class implements PsortMacrosInterface {});
