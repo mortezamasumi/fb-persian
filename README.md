@@ -5,8 +5,6 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/mortezamasumi/fb-persian/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/mortezamasumi/fb-persian/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/mortezamasumi/fb-persian.svg?style=flat-square)](https://packagist.org/packages/mortezamasumi/fb-persian)
 
-
-
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
 ## Installation
@@ -15,39 +13,6 @@ You can install the package via composer:
 
 ```bash
 composer require mortezamasumi/fb-persian
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="fb-persian-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="fb-persian-config"
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="fb-persian-views"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-## Usage
-
-```php
-$fbPersian = new Mortezamasumi\FbPersian();
-echo $fbPersian->echoPhrase('Hello, Mortezamasumi!');
 ```
 
 ## Testing
@@ -70,8 +35,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Morteza Masumi](https://github.com/mortezamasumi)
-- [All Contributors](../../contributors)
+-   [Morteza Masumi](https://github.com/mortezamasumi)
+-   [All Contributors](../../contributors)
 
 ## License
 
